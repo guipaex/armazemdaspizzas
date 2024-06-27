@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.header {
+  width: 100vw;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  filter: drop-shadow(0 4px 16px rgba(100, 0, 0, 0.16));
+}
+
+.promoPage {
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  & h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+}
+
+.banner {
+  width: 90vw;
+  max-width: 560px;
+  height: 15rem;
+  background-color: rgb(151, 5, 5);
+  border-radius: 2rem;
+  margin: 3rem auto;
+  position: relative;
+  & .img {
+    &_pizza,
+    &_refri {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: calc(0% - 0.5rem);
+    }
+
+    &_pizza {
+      width: 480px;
+      left: calc(25% - 10rem);
+    }
+    &_refri {
+      right: 0;
+      top: -2.5rem;
+      max-width: 160px;
+      height: auto;
+    }
+  }
+}
