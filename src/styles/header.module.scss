@@ -1,0 +1,27 @@
+.header {
+  width: 100vw;
+  padding: 1rem 4rem;
+  background-color: #fff;
+  filter: drop-shadow(0 4px 16px rgba(100, 0, 0, 0.16));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .logo {
+    transform: translateY(-4px);
+    width: 8rem;
+    height: auto;
+  }
+
+  & .links {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    & .icon {
+      color: rgb(151, 5, 5);
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
