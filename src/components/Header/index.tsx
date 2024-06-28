@@ -14,10 +14,16 @@ export default function Header() {
         alt="pizza"
       />
       <div className={styles.links}>
-        <Link href="https://www.instagram.com/armazemdaspizzas00/">
+        <Link
+          href="https://www.instagram.com/armazemdaspizzas00/"
+          target="_blank"
+        >
           <FaInstagram className={styles.icon} />
         </Link>
-        <Link href="https://www.facebook.com/armazemdaspizzas001">
+        <Link
+          href="https://www.facebook.com/armazemdaspizzas001"
+          target="_blank"
+        >
           <FaFacebook className={styles.icon} />
         </Link>
       </div>

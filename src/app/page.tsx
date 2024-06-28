@@ -2,6 +2,7 @@ import Image from "next/image";
 import MessageButton from "@/components/Button";
 import styles from "@/styles/promo.module.scss";
 import Header from "@/components/Header";
+import { PedidosProvider } from "@/context/requestsContext";
 
 export default function Home() {
   return (
@@ -26,7 +27,9 @@ export default function Home() {
             alt="pizza"
           />
         </div>
-        <MessageButton />
+        <PedidosProvider>
+          <MessageButton />
+        </PedidosProvider>
       </main>
     </>
   );

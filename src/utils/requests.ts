@@ -7,7 +7,7 @@ export async function getCounter() {
 
   if (counter.exists()) {
     console.log(counter.data().counter);
-    return counter.data().counter;
+    return;
   } else {
     console.log("Bugou!");
   }

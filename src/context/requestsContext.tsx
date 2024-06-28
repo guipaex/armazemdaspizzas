@@ -1,14 +1,54 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+"use client";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
+import { db } from "@/config/firebase";
+import { doc, onSnapshot } from "firebase/firestore";
 
-const RequestsContext = createContext({});
+interface PedidosContextProps {
+  quantidade: number;
+  date: string;
+}
 
-export const RequestsProvider: React.FC<{ children: ReactNode }> = ({
+const PedidosContext = createContext<PedidosContextProps | undefined>(
+  undefined
+);
+
+export const PedidosProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [requests, setRequests] = useState([]);
+  const [quantidade, setQuantidade] = useState<number>(0);
+  const date = `${new Date().getDate()} de ${new Date().toLocaleString(
+    "pt-BR",
+    { month: "long" }
+  )}`;
+  useEffect(() => {
+    const docRef = doc(db, "pedidos", date);
+    const unsubscribe = onSnapshot(docRef, (doc) => {
+      if (doc.exists()) {
+        const data = doc.data();
+        setQuantidade(data.counter);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   return (
-    <RequestsContext.Provider value={{ requests, setRequests }}>
+    <PedidosContext.Provider value={{ quantidade, date }}>
       {children}
-    </RequestsContext.Provider>
+    </PedidosContext.Provider>
   );
+};
+
+export const usePedidos = (): PedidosContextProps => {
+  const context = useContext(PedidosContext);
+  if (context === undefined) {
+    throw new Error("usePedidos must be used within a PedidosProvider");
+  }
+  return context;
 };
