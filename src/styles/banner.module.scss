@@ -1,0 +1,18 @@
+.banner {
+  aspect-ratio: 16 / 6;
+  width: 90vw;
+  max-width: 960px;
+  max-height: 480px;
+  background-color: var(--mid-red);
+  border-radius: 1.5rem;
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  & .img {
+    object-position: 50%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}

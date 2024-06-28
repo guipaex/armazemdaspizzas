@@ -1,6 +1,8 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
+  --dark-red: #590505;
+  --mid-red:#970505;
 }
 * {
   box-sizing: border-box;

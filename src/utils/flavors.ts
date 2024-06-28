@@ -1,0 +1,17 @@
+export const FLAVORS = [
+  "Alho",
+  "Calabresa",
+  "Mussarela",
+  "Portuguesa",
+  "Mista",
+  "Margherita",
+  "Frango com Catupiry",
+  "Frango com Cheddar",
+  "Napolitana",
+  "Presunto com Catupiry",
+  "Presunto com Cheddar",
+  "Sardinha a Moda",
+  " Toscana",
+  "Vegetariana",
+  "Veneza",
+];

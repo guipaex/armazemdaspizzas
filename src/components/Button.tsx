@@ -8,11 +8,10 @@ import { FaWhatsapp } from "react-icons/fa6";
 import { usePedidos } from "@/context/requestsContext";
 
 export default function MessageButton() {
-  const { quantidade, date } = usePedidos();
+  const { quantidade, date, client, flavor } = usePedidos();
+  const count = quantidade;
 
   async function handleClick() {
-    console.log("Clicou no botão");
-    console.log(date);
     await setDoc(
       doc(db, "pedidos", date),
       {
@@ -22,21 +21,19 @@ export default function MessageButton() {
     );
   }
 
-  const message = "FAÇA O L IMEDIATAMENTE";
-  const num = "5521996505223";
+  const message = `Oi, meu nome é ${client.name}. Vi a sua promoção da Pizza Gigante com o Kuat 2L, e gostaria de pedir no sabor ${flavor}. Meu endereço é: ${client.address}.`;
+
+  const num = "5521970993261";
+
   return (
-    // <Link
-    //   className={style.wppButton}
-    //   onClick={handleClick}
-    //   href={`https://wa.me/${num}?text=${message}`}
-    //   target="_blank"
-    // >
-    //   <FaWhatsapp className={style.icon} />
-    //   Pedir pelo Whatsapp
-    // </Link>
-    <button className={style.wppButton} onClick={handleClick}>
+    <Link
+      className={style.wppButton}
+      onClick={handleClick}
+      href={`https://wa.me/${num}?text=${message}`}
+      target="_blank"
+    >
       <FaWhatsapp className={style.icon} />
       Pedir pelo Whatsapp
-    </button>
+    </Link>
   );
 }

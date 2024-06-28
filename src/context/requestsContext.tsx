@@ -8,10 +8,18 @@ import React, {
 } from "react";
 import { db } from "@/config/firebase";
 import { doc, onSnapshot } from "firebase/firestore";
+interface Client {
+  name: string;
+  address: string;
+}
 
 interface PedidosContextProps {
   quantidade: number;
   date: string;
+  client: Client;
+  flavor: string;
+  setClient: React.Dispatch<React.SetStateAction<Client>>;
+  setFlavor: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const PedidosContext = createContext<PedidosContextProps | undefined>(
@@ -22,10 +30,14 @@ export const PedidosProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [quantidade, setQuantidade] = useState<number>(0);
+  const [client, setClient] = useState<Client>({ name: "", address: "" });
+  const [flavor, setFlavor] = useState<string>("");
+
   const date = `${new Date().getDate()} de ${new Date().toLocaleString(
     "pt-BR",
     { month: "long" }
   )}`;
+
   useEffect(() => {
     const docRef = doc(db, "pedidos", date);
     const unsubscribe = onSnapshot(docRef, (doc) => {
@@ -39,7 +51,9 @@ export const PedidosProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   return (
-    <PedidosContext.Provider value={{ quantidade, date }}>
+    <PedidosContext.Provider
+      value={{ quantidade, date, client, setClient, flavor, setFlavor }}
+    >
       {children}
     </PedidosContext.Provider>
   );

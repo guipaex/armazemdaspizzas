@@ -6,20 +6,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   & .logo {
     transform: translateY(-4px);
     width: 8rem;
     height: auto;
   }
-
   & .links {
     display: flex;
     gap: 1rem;
     justify-content: space-between;
     align-items: center;
     & .icon {
-      color: rgb(151, 5, 5);
+      color: var(--dark-red);
       width: 2rem;
       height: 2rem;
     }
